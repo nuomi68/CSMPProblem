@@ -46,7 +46,7 @@ CSMPProblem::computeResidualTags(const std::set<TagID> & tags)
     unsigned int n_vars = nl.nVariables();
     const auto & libmesh_system = nl.system();
     auto cm = std::make_unique<CouplingMatrix>(n_vars);
-    if (time()<999)
+    if (time()>999)
     {
       for (unsigned int i = 0; i < n_vars; ++i)
         (*cm)(i, i) =  1;
@@ -81,7 +81,7 @@ CSMPProblem::computeJacobianTags(const std::set<TagID> & tags)
   //   unsigned int n_vars = nl.nVariables();
   //   const auto & libmesh_system = nl.system();
   //   auto cm = std::make_unique<CouplingMatrix>(n_vars);
-  //   if (time()<999)
+  //   if (time()>999)
   //   {
   //     // put 1s on diagonal
   //     for (unsigned int i = 0; i < n_vars; ++i)
