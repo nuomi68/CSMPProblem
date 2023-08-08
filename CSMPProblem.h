@@ -10,22 +10,19 @@
 #pragma once
 
 #include "FEProblem.h"
-#include "MoosePreconditioner.h"
 
 /**
  * Specialization of SubProblem for solving nonlinear equations plus auxiliary equations
  *
  */
-class CSMPProblem : public FEProblem,public MoosePreconditioner
+class CSMPProblem : public FEProblem
 {
 public:
   static InputParameters validParams();
 
   CSMPProblem(const InputParameters & parameters);
 
-void computeResidualTags(const std::set<TagID> & tags);
-void computeJacobianTags(const std::set<TagID> & tags);
+  void timestepSetup() override;
 
- Real _reference_time;
-
+  Real _reference_time;
 };
